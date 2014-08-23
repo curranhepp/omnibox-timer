@@ -2,7 +2,8 @@
 var audioList = [
   {
     "name": "ring",
-    "src": "alarm.wav"
+    // "src": "alarm.wav"
+    "src": "google_beep.mp3"
   }
 ];
 var audios = {};
@@ -42,6 +43,13 @@ function setupNotification(timer) {
               + timer.currentTime);
 
   setTimeout(function() {
+    chrome.storage.local.get({soundType: "tts", soundId: "ring"}, function(object) {
+      if (object.soundType == "tts") {
+        chrome.tts.speak(timer.desc);
+      } else {
+        audios[object.soundId].play();
+      }
+    });
     var notification = new window.Notification(title, {
       tag: id,
       icon: "48.png",
@@ -53,13 +61,7 @@ function setupNotification(timer) {
       }
       console.log(id + ": closed at " + new Date().toString());
     });
-    chrome.storage.local.get({soundType: "tts", soundId: "ring"}, function(object) {
-      if (object.soundType == "tts") {
-        chrome.tts.speak(timer.desc);
-      } else {
-        audios[object.soundId].play();
-      }
-    });
+    
     console.log(id + ": notified at " + new Date().toString());
   }, ms);
 }
