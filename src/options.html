@@ -1,52 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Omnibox Timer: Options</title>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="moment.js"></script>
-<script type="text/javascript" src="ui.js"></script>
-<link rel="stylesheet" type="text/css" href="options.css">
+	<title>Omnibox Timer: Options</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="moment.js"></script>
+	<script type="text/javascript" src="ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="options.css">
 </head>
 
 <body>
-<h1><img src="48.png"/> Omnibox Timer</h1>
-<h2>Current timers</h2>
-<p>Sorted by creation time. Please refresh this page if you created more timers.</p>
-<table id="timers">
-<tbody>
-<tr>
-  <th>Description</th>
-  <th>Creation time</th>
-  <th>Notification time</th>
-</tr>
-</tbody>
-</table>
+<div id="wrapper">
+	<div class="content bootstrap">
+		<header>
+			<h1><img src="48.png"/> Omnibox Timer</h1>
+		</header>
 
-<h2>Statistics</h2>
-<ul id="stats"></ul>
+<section>
+	<h2>Current timers</h2>
+	<p>Sorted by creation time. Please refresh this page if you created more timers.</p>
+	<table id="timers">
+	<tbody>
+		<tr>
+		  	<th>Description</th>
+	  		<th>Creation time</th>
+	  		<th>Notification time</th>
+		</tr>
+	</tbody>
+	</table>
+</section>
 
-<h2>Options</h2>
+<section>
+	<h2>Statistics</h2>
+	<ul id="stats"></ul>
+</section>
 
-<div>
-<p>Sound:
-<input type="radio" name="soundType" value="tts" id="tts">
-<label for="tts">TTS (Text To Speech)</label>
-<input type="radio" name="soundType" value="bell" id="bell">
-<label for="bell">Bell</label>
-</p>
+	<section>
+		<h2>Options</h2>
+
+		<div>
+			<p>Sound:</p>
+			<ul>
+				<li><input type="radio" name="soundType" value="tts" id="tts">
+				<label for="tts">TTS (Text To Speech)</label></li>
+				<li><input type="radio" name="soundType" value="bell" id="bell">
+				<label for="bell">Bell</label></li>
+			</ul>
+		</div>
+
+				<div>
+					<p>How to suggest timer texts:</p>
+					<ul>
+						<li><input type="radio" name="historySuggestionType" value="time" id="time">
+						<label for="time">Suggest most recently used timer text first</label></li>
+						<li><input type="radio" name="historySuggestionType" value="count" id="count">
+						<label for="count">Suggest most frequently used timer text first</label></li>
+					</ul>
+				</div>
+
+			<div id="flash" class="alert"></div>
+		</section>
+	</div>
 </div>
-
-<div>
-<p>How to suggest timer texts:
-<input type="radio" name="historySuggestionType" value="time" id="time">
-<label for="time">Suggest most recently used timer text first</label>
-<input type="radio" name="historySuggestionType" value="count" id="count">
-<label for="count">Suggest most frequently used timer text first</label>
-</p>
-</div>
-
-<div id="flash"></div>
-
 </body>
 
 </html>
